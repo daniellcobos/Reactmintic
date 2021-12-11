@@ -19,13 +19,13 @@ const Nav = () => {
       <a className="nav-link" href="userForm.html" id="inactiveOption">Registro Funcionario</a>
     </li>
     <li className="nav-item">
-      <a className="nav-link" href="fraganceForm.html" id="inactiveOption">Registro Producto</a>
+      <Link className="nav-link" to="/registroProductos" id="inactiveOption">Registro Producto</Link>
     </li>
     <li className="nav-item">
       <a className="nav-link" href="tableUser.html" id="inactiveOption">Admon Usuarios</a>
     </li>
     <li className="nav-item">
-      <a className="nav-link" href="registroProductos.html  " id="inactiveOption">Inventario Productos</a>
+      <Link className="nav-link" to="/listaProductos"  id="inactiveOption">Inventario Productos</Link>
     </li>
     <li className="nav-item dropdown">
       <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"
