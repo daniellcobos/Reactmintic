@@ -22,7 +22,7 @@ const Nav = () => {
       <Link className="nav-link" to="/registroProductos" id="inactiveOption">Registro Producto</Link>
     </li>
     <li className="nav-item">
-      <a className="nav-link" href="tableUser.html" id="inactiveOption">Admon Usuarios</a>
+      <Link className="nav-link" to="/listaUsuarios" id="inactiveOption">Admin Usuarios</Link>
     </li>
     <li className="nav-item">
       <Link className="nav-link" to="/listaProductos"  id="inactiveOption">Inventario Productos</Link>

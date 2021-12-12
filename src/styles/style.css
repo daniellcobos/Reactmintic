@@ -178,3 +178,7 @@ footer p{
     background-image: linear-gradient(-225deg, #eaec65 30%, #f58003 70%);
     max-width: 600px;
 }
+#message{
+    margin-top: 2px;
+    background-color: white;
+}

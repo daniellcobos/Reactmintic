@@ -7,6 +7,7 @@ import './styles/style.css'
 import Registro from './pages/registro';
 import FraganceForm from './pages/FraganceForm';
 import Fragances from './pages/Fragances';
+import UserList from './pages/UserList';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
       </Route>
       <Route path='/listaProductos'>
           <Fragances/>
+      </Route>
+      <Route path='/listaUsuarios'>
+          <UserList/>
       </Route>
     </Layout>
   );
