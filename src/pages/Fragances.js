@@ -1,9 +1,39 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import ProductEdit from '../components/productEdit';
 
+
+let form = <p></p>
+
+
+ const saveFragance = async(product) => {
+   const response = await fetch( "http://132.226.165.142/api/fragance/update", {
+    method: 'PUT',
+    body: JSON.stringify(product),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  const data = await response.json();
+  console.log(data); 
+
+ }
+ const  borrarProducto = async(id) => {
+   console.log(id)
+  const response = await fetch('http://132.226.165.142/api/fragance/' + id, {
+    method: 'DELETE',
+  });
+  const data = await response.json();
+  console.log(data);
+}
+const showForm = (id) => {
+  return (<ProductEdit onEditProduct={saveFragance} id={id}></ProductEdit>)
+  
+}
 const Fragances = () => {
+    const [Showform,setShowForm] = useState(false)
     const [Fragances, setFragances] = useState([]);
     //funciones de carga
-    const fetchMoviesHandler = useCallback(async () => {
+    const fetchProductsHandler = useCallback(async () => {
      
         try {
           const response = await fetch('http://132.226.165.142/api/fragance/all');
@@ -12,7 +42,7 @@ const Fragances = () => {
           }
           const data = await response.json();
            const dataFragances = []
-            for (const obj in data){
+            for (const obj of data){
                 dataFragances.push(
                     {
                         availability:obj.availability,
@@ -37,22 +67,13 @@ const Fragances = () => {
       }, []);
     
       useEffect(() => {
-        fetchMoviesHandler();
-      }, [fetchMoviesHandler]);
+        fetchProductsHandler();
+      }, [fetchProductsHandler]);
     
-      async function addMovieHandler(movie) {
-        const response = await fetch('https://react-http-6b4a6.firebaseio.com/movies.json', {
-          method: 'POST',
-          body: JSON.stringify(movie),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        const data = await response.json();
-        console.log(data);
+      const showFormHandler = (id) => {
+        form = showForm(id)
+        setShowForm(true)
       }
-
-
 
 
       return(
@@ -82,7 +103,20 @@ const Fragances = () => {
                         </tr>
                       </thead>
                       <tbody id="resultado3">
-                          {Fragances}
+                         {Fragances.map((fr) => { return(
+                         <tr key={fr.reference}>
+                           <td>{fr.reference}</td>
+                           <td>{fr.brand}</td>
+                           <td>{fr.category}</td>
+                           <td>{fr.price}</td>
+                           <td>{fr.quantity}</td>
+                           <td>{fr.description}</td>
+                           <td>{fr.availability ? "Si" : "No"}</td>
+                           <td><img src={fr.photography} alt="no disponible"/></td>
+                           <td> <button onClick={() => showFormHandler(fr.reference)}>Editar</button></td>
+                           <td> <button onClick={ () => borrarProducto(fr.reference)}>Borrar</button></td>
+                          </tr>
+                           )} )}
                       </tbody>
                     </table>
                   </div>
@@ -91,8 +125,12 @@ const Fragances = () => {
             </div>
           </div>
         </div>
+         {form}
       </div>
+    
       )
+
+      
 }
 
 
