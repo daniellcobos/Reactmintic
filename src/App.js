@@ -8,6 +8,7 @@ import Registro from './pages/registro';
 import FraganceForm from './pages/FraganceForm';
 import Fragances from './pages/Fragances';
 import UserList from './pages/UserList';
+import UserAdmin from './pages/UserAdmin';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
       </Route>
       <Route path='/listaUsuarios'>
           <UserList/>
+      </Route>
+      <Route path='/AdminUsuarios'>
+          <UserAdmin/>
       </Route>
     </Layout>
   );

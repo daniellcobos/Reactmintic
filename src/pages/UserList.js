@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ProductEdit from '../components/productEdit';
+import UserEdit from '../components/userEdit';
 
 
 let form = <p></p>
@@ -73,7 +74,8 @@ const UserList = () => {
       }
       //formas
       const showForm = (id) => {
-        return (<ProductEdit onEditProduct={saveUser} id={id}></ProductEdit>)
+       // return (<ProductEdit onEditProduct={saveUser} id={id}></ProductEdit>)
+       return(<UserEdit onEditUser={saveUser}  id={id}  />)
         
       }
       const showFormHandler = (id) => {

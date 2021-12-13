@@ -16,7 +16,7 @@ const Nav = () => {
       <Link className="nav-link" to="/registro" id="inactiveOption">Registrarse</Link>
     </li>
     <li className="nav-item">
-      <a className="nav-link" href="userForm.html" id="inactiveOption">Registro Funcionario</a>
+      <Link className="nav-link" to='/AdminUsuarios' id="inactiveOption">Registro Funcionario</Link>
     </li>
     <li className="nav-item">
       <Link className="nav-link" to="/registroProductos" id="inactiveOption">Registro Producto</Link>
