@@ -9,15 +9,20 @@ import FraganceForm from './pages/FraganceForm';
 import Fragances from './pages/Fragances';
 import UserList from './pages/UserList';
 import UserAdmin from './pages/UserAdmin';
+import {useState} from "react";
+import UserProfile from './pages/UserProfile';
 
 function App() {
+
+  const [id,setId] = useState(0)
+  const getId = (id) =>{setId(id) ;console.log(id)}
   return (
-    <Layout>
+    <Layout userId={id}>
       <Route exact path='/'>
           <p> Principal</p>
       </Route>
       <Route path='/login'>
-          <Login/>
+          <Login getId={(id) => {getId(id)}}/>
       </Route>
       <Route path='/registro'>
           <Registro/>
@@ -33,6 +38,9 @@ function App() {
       </Route>
       <Route path='/AdminUsuarios'>
           <UserAdmin/>
+      </Route>
+      <Route path='/usuario/:userId'>
+        <UserProfile/>
       </Route>
     </Layout>
   );

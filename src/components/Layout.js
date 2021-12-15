@@ -4,8 +4,8 @@ import {Fragment} from 'react';
 const Layout = (props) => {
     return(
         <Fragment>
-        <Nav/>
-        <main>{props.children}</main>
+        <Nav userId={props.userId}/>
+        <main >{props.children}</main>
     </Fragment>
     )
   

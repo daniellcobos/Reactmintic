@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
 
-const Nav = () => {
+const Nav = (props) => {
+
+   const perfilLink = () => {
+    if (props.userId == 0){
+      return(<p></p>)
+      }
+      else{
+        return( <Link className="nav-link" to={"/usuario/" + props.userId}> Mi Perfil</Link>)
+      }
+   }
+
+
     return(
         <header>
            <div className="container-fluid bg-dark d-flex justify-content-center" id="header">
@@ -37,6 +48,9 @@ const Nav = () => {
     </li>
     <li className="nav-item">
       <a className="nav-link" href="contact.html" id="inactiveOption">Contactanos</a>
+    </li>
+    <li className="nav-item">
+       {perfilLink()}
     </li>
   </ul>
         </header>

@@ -4,15 +4,18 @@ import React, { useRef, useState } from 'react';
 
 
 
-const Login = () => {
+const Login = (props) => {
+   
     const emailRef = useRef("")
     const passwordRef = useRef("")
     const [message,setMessage] = useState("  ");
     
-    
+
     const checkId = (data) => {
       if (data.id !== null){
         setMessage("Ingreso Exitoso")
+        console.log(data.id)
+        props.getId(data.id)
       }
       else{
         setMessage("Credenciales equivocadas")
@@ -34,9 +37,11 @@ const Login = () => {
         
         const data = await response.json();
         checkId(data)
+        
 
       }
       catch(e){
+        console.log(e)
         setMessage("Problemas de Conexion")
       }
     }
