@@ -39,20 +39,21 @@ const UserProfile = (props) => {
 
 
       return(
-        <div className="container">
+        <div className="container-ligt">
           <div className="card">
               <div  className="card-body">
                   <ul>
-                      <p> Identificacion :{user.identification}</p>
-                      <p> Nombre:{user.name}</p>
-                      <p> Tipo:{user.type}</p>
-                      <p> Zona:{user.zone}</p>
+                      <p> <b>Identificacion:</b> {user.identification}</p>
+                      <p> Nombre: {user.name}</p>
+                      <p> Tipo: {user.type}</p>
+                      <p> Zona: {user.zone}</p>
                       <p> Correo: {user.email}</p>
                   </ul>
+                  <Button onClick={showOrders}>Ver Ordenes</Button>
              </div>
         </div>
           
-            <Button onClick={showOrders}>Ver Ordenes</Button>
+            
             {order}
           </div>
           
