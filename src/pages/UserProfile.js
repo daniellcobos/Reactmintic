@@ -1,14 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Button from 'react-bootstrap/esm/Button';
 import { useParams } from 'react-router-dom';
+import Orders from './Orders';
 
 
 
 const UserProfile = (props) => {
     const [user,setUser] = useState({})
+    const [order,setOrder] = useState()
     const params = useParams();
    
-
+    const showOrders = () => {
+      setOrder(<Orders userId={params.userId}/>)
+    }
     const fetchUserHandler = useCallback(async () => {
      
         try {
@@ -35,8 +39,9 @@ const UserProfile = (props) => {
 
 
       return(
-          <div class="card">
-              <div  class="card-body">
+        <div className="container">
+          <div className="card">
+              <div  className="card-body">
                   <ul>
                       <p> Identificacion :{user.identification}</p>
                       <p> Nombre:{user.name}</p>
@@ -44,12 +49,11 @@ const UserProfile = (props) => {
                       <p> Zona:{user.zone}</p>
                       <p> Correo: {user.email}</p>
                   </ul>
-                  
-                  
-                  
-              
              </div>
-            <Button>Ver Ordenes</Button>
+        </div>
+          
+            <Button onClick={showOrders}>Ver Ordenes</Button>
+            {order}
           </div>
           
       )
