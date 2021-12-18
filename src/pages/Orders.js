@@ -110,6 +110,7 @@ const Orders = (props) => {
                     <th scope="col">Id</th>
                     <th scope="col">Status</th>
                     <th scope="col">Dia Registro</th>
+                    <th scope="col">Orden</th>
             </tr>
          </thead>
          <tbody>
@@ -117,12 +118,18 @@ const Orders = (props) => {
             
             orders.map(
                 (order) => {
+                    console.log(order)
                     const date =new Date(order.obj.registerDay)
                     return(
                         <tr key ={order.obj.id}>
                         <td>{order.obj.id}</td>
                         <td>{order.obj.status}</td>
                         <td>{date.toDateString()}</td>
+                        <td>{Object.keys(order.obj.quantities).map(
+                            (key,index) => {
+                                return(<p key={key}>{key}:{order.obj.quantities[key]}<br/></p>)
+                            }
+                        )}</td>
                     </tr>
                     )     
                 }

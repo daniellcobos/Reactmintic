@@ -11,6 +11,7 @@ import UserList from './pages/UserList';
 import UserAdmin from './pages/UserAdmin';
 import {useState} from "react";
 import UserProfile from './pages/UserProfile';
+import OrderForm from './pages/DoOrders';
 
 function App() {
 
@@ -41,6 +42,9 @@ function App() {
       </Route>
       <Route path='/usuario/:userId'>
         <UserProfile/>
+      </Route>
+      <Route path='/hacerOrden'>
+        <OrderForm userId={id}/>
       </Route>
     </Layout>
   );

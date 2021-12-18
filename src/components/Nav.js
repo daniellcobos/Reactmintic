@@ -38,6 +38,9 @@ const Nav = (props) => {
     <li className="nav-item">
       <Link className="nav-link" to="/listaProductos"  id="inactiveOption">Inventario Productos</Link>
     </li>
+    <li className="nav-item">
+      <Link className="nav-link" to="/hacerOrden"  id="inactiveOption">Hacer Nueva Orden</Link>
+    </li>
     <li className="nav-item dropdown">
       <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"
         id="inactiveOption">Idiomas</a>

@@ -28,6 +28,7 @@ const editUser = async(product) => {
 }
 
 const UserList = () => {
+    const[date,setDate] = useState("");
     const [Showform,setShowForm] = useState(false)
     const [Users, setUsers] = useState([]);
     //funciones de carga y conexion
@@ -67,6 +68,40 @@ const UserList = () => {
       useEffect(() => {
         fetchProductsHandler();
       }, [fetchProductsHandler]);
+
+      const fetchBirthdayUsersHandler = useCallback(async (b) => {
+        let tdate = new Date(b)
+        let birthday = tdate.getMonth()
+        try {
+          const response = await fetch('http://132.226.165.142/api/user/birthday/' + birthday);
+          if (!response.ok) {
+            throw new Error('Something went wrong!');
+          }
+          const data = await response.json();
+           const dataUsers = []
+            for (const obj of data){
+                dataUsers.push(
+                    {   id:obj.id,
+                        identification:obj.identification,
+                        name: obj.name,
+                        birthtDay: obj.birthtDay,
+                        monthBirthtDay: obj.monthBirthtDay,
+                        address: obj.address,
+                        cellPhone: obj.cellPhone,
+                        email: obj.email,
+                        zone: obj.zone,
+                        type: obj.type,}
+                )
+               
+
+            }
+            setUsers(dataUsers)
+            console.log(dataUsers)
+        } catch (error) {
+            console.log("mal")
+        }
+       
+      }, []);
       
       const saveUser = (user) => {
        editUser(user)
@@ -82,7 +117,11 @@ const UserList = () => {
         form = showForm(id)
         setShowForm(true)
       }
-
+      const cambioFecha = (e) => {
+        const dateString = e.toString()
+        setDate(dateString)
+   
+    }
 
       return(
         <div className="container">
@@ -95,6 +134,9 @@ const UserList = () => {
                 </div>
                 <div className="card-body">
                   <div className="table-responsive">
+                  <label htmlFor='date'>Encontrar personas que cumplen en el mes</label>
+                  <input type="date" name="date" id="date" onChange={(e) => {cambioFecha(e.target.value)}}/>
+                  <button className="button" onClick={() => {fetchBirthdayUsersHandler(date)}}>Consultar</button>
                     <table id="userList" className="table table-hover">
                       <thead className="thead-light">
                         <tr>
